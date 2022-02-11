@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+  "name": "fansite-downloader",
+  "version": "1.0.0",
+
+  "author": "gkasse",
+
+  "permissions": [
+    "tabs",
+    "downloads",
+    "notifications"
+  ],
+
+  "browser_action": {
+    "default_title": "Fansiteダウンローダー",
+    "default_popup": "index.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.patreon.com/*"],
+      "js": [
+        "browser-polyfill.min.js",
+        "content/patreon.js"
+      ]
+    },
+    {
+      "matches": ["*://fantia.jp/*"],
+      "js": [
+        "browser-polyfill.min.js",
+        "content/fantia.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://www.fanbox.cc/*",
+        "*://*.fanbox.cc/*"
+      ],
+      "js": [
+        "browser-polyfill.min.js",
+        "content/fanbox.js"
+      ]
+    }
+  ]
+}
