@@ -48,8 +48,8 @@ browser.runtime.onMessage.addListener(async (msg) => {
   }
   await wait(500);
 
-  const nameHolder = document.evaluate('//body/div/div/div[3]/div/div[1]/div/div/div[2]/div[4]/div/div[1]/a/div/div/div/div[3]/div[1]/div', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
-  const author = nameHolder?.singleNodeValue?.textContent?.trim() ?? '';
+  const nameHolder = document.querySelector('div[data-tag="metadata-wrapper"] > div:nth-child(1) > div');
+  const author = nameHolder?.textContent?.trim() ?? '';
   const elements = document.querySelectorAll('div[data-tag="post-content"] img');
   const images = Array.from(elements.values()).map(image => image.src);
 
