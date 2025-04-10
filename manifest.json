@@ -1,34 +1,34 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "fansite-downloader",
   "version": "1.0.0",
 
   "author": "gkasse",
 
   "permissions": [
-    "tabs",
-    "downloads",
-    "notifications"
+    "contextMenus",
+    "notifications",
+    "downloads"
   ],
 
-  "browser_action": {
-    "default_title": "Fansiteダウンローダー",
-    "default_popup": "index.html"
+  "background": {
+    "scripts": [
+      "src/context.js"
+    ],
+    "type": "module"
   },
 
   "content_scripts": [
     {
       "matches": ["https://www.patreon.com/*"],
       "js": [
-        "browser-polyfill.min.js",
-        "content/patreon.js"
+        "src/patreon.js"
       ]
     },
     {
       "matches": ["*://fantia.jp/*"],
       "js": [
-        "browser-polyfill.min.js",
-        "content/fantia.js"
+        "src/fantia.js"
       ]
     },
     {
@@ -37,8 +37,15 @@
         "*://*.fanbox.cc/*"
       ],
       "js": [
-        "browser-polyfill.min.js",
-        "content/fanbox.js"
+        "src/fanbox.js"
+      ]
+    },
+    {
+      "matches": [
+        "*://ci-en.dlsite.com/creator/*"
+      ],
+      "js": [
+        "src/ci-en.js"
       ]
     }
   ]
