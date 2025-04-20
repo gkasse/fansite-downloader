@@ -18,7 +18,6 @@ async function parseLightboxImages(images) {
   const result = [];
   for (const image of images) {
     image.click();
-    await wait(300);
 
     const imageInBox = await new Promise(resolve => {
       const id = setInterval(() => {
